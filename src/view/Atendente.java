@@ -15,30 +15,29 @@ public class Atendente {
 		System.out.println("2 - Listar frutas");
 		System.out.println("3 - Remover fruta");
 		System.out.println("0 - Sair");
+		System.out.print("Escolha uma opção: ");
 		int opcao = input.nextInt();
 		input.nextLine();
 		return opcao;
 	}
 
 	public String frutaNome() {
-		System.out.println("Digite o nome da fruta:");
+		System.out.print("Digite o nome da fruta:");
 		return input.nextLine();
 	}
 
 	public double frutaPreco() {
-		System.out.println("Digite o preço da fruta:");
-		return input.nextDouble();
+		System.out.print("Digite o preço da fruta:");
+		double preco = input.nextDouble();
+		input.nextLine();
+		return preco;
 	}
 
 	public int frutaQuantidade() {
-		System.out.println("Digite a quantidade:");
-		return input.nextInt();
-	}
-
-	public String frutaTipo() {
+		System.out.print("Digite a quantidade:");
+		int quantidade = input.nextInt();
 		input.nextLine();
-		System.out.println("Digite o tipo da fruta:");
-		return input.nextLine();
+		return quantidade;
 	}
 
 	public void vizualizar(Fruta fruta) {
@@ -46,7 +45,7 @@ public class Atendente {
 		System.out.println("Nome: " + fruta.getNome());
 		System.out.println("Preço: R$" + fruta.getPreco());
 		System.out.println("Quantidade: " + fruta.getQuantidade());
-		System.out.println("Tipo: " + fruta.getTipo());
+		System.out.println("Código: " + fruta.getCodigo());
 	}
 
 	public String removerFruta() {

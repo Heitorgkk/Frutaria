@@ -4,21 +4,24 @@ public class Fruta {
 	private String nome;
 	private double preco;
 	private int quantidade;
-	private String tipo;
+	private int codigo;
+	private static int contadorFrutas;
 
 	public Fruta() {
 		this.nome = "";
 		this.preco = 0.0;
 		this.quantidade = 0;
-		this.tipo = "";
+		this.codigo = contadorFrutas++;
 	}
 
-	public Fruta(String nome, double preco, int quantidade, String tipo) {
+	public Fruta(String nome, double preco, int quantidade) {
 		this.nome = nome;
 		this.preco = preco;
 		this.quantidade = quantidade;
-		this.tipo = tipo;
+		this.codigo = contadorFrutas++;
 	}
+	
+	// Getters e Setters
 
 	public String getNome() {
 		return nome;
@@ -44,12 +47,9 @@ public class Fruta {
 		this.quantidade = quantidade;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public int getCodigo() {
+		return codigo;
 	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+	
 
 }

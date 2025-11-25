@@ -6,11 +6,7 @@ import model.Fruta;
 import view.Atendente;
 
 public class Estoque {
-	private List<Fruta> listaFruta;
-
-	public Estoque() {
-		listaFruta = new ArrayList<>();
-	}
+	private List<Fruta> listaFruta = new ArrayList<>();
 
 	public void gerenciarEstoque(int opcao, Atendente atendente) {
 		switch (opcao) {
@@ -18,9 +14,8 @@ public class Estoque {
 			String nome = atendente.frutaNome();
 			double preco = atendente.frutaPreco();
 			int quantidade = atendente.frutaQuantidade();
-			String tipo = atendente.frutaTipo();
 
-			Fruta fruta = new Fruta(nome, preco, quantidade, tipo);
+			Fruta fruta = new Fruta(nome, preco, quantidade);
 			listaFruta.add(fruta);
 		}
 
