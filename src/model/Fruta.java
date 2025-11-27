@@ -1,55 +1,23 @@
 package model;
 
-public class Fruta {
-	private String nome;
-	private double preco;
-	private int quantidade;
-	private int codigo;
-	private static int contadorFrutas;
+public class Fruta extends Produto{
+	
+	private double peso;
 
 	public Fruta() {
-		this.nome = "";
-		this.preco = 0.0;
-		this.quantidade = 0;
-		this.codigo = contadorFrutas++;
+		super();
+		this.setPeso(0.0);
+	}
+	public Fruta(String nome, double preco, int quantidade, double peso) {
+		super(nome, preco, quantidade);
+		this.setPeso(peso);
 	}
 
-	public Fruta(String nome, double preco, int quantidade) {
-		this.nome = nome;
-		this.preco = preco;
-		this.quantidade = quantidade;
-		this.codigo = contadorFrutas++;
+	public double getPeso() {
+		return peso;
 	}
-	
-	// Getters e Setters
-
-	public String getNome() {
-		return nome;
+	public void setPeso(double peso) {
+		this.peso = peso;
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public double getPreco() {
-		return preco;
-	}
-
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
-
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public int getCodigo() {
-		return codigo;
-	}
-	
 
 }
