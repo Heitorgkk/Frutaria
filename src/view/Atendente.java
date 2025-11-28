@@ -1,7 +1,8 @@
 package view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import model.Fruta;
+import model.Produto;
 
 public class Atendente {
 	Scanner input;
@@ -10,58 +11,68 @@ public class Atendente {
 		input = new Scanner(System.in);
 	}
 
-	public int menuPrincipal() {
-		System.out.println("1 - Cadastrar fruta");
-		System.out.println("2 - Listar frutas");
-		System.out.println("3 - Remover fruta");
-		System.out.println("0 - Sair");
-		System.out.print("Escolha uma opção: ");
-		int opcao = input.nextInt();
-		input.nextLine();
-		return opcao;
+	public int lerInt() {
+		
+		int out;
+		try {
+			out = input.nextInt();
+		}catch(InputMismatchException e) {
+			System.out.println("Apenas número inteiro!");
+			return lerInt();
+		}
+		return out;
 	}
-
-	public String frutaNome() {
-		System.out.print("Digite o nome da fruta:");
+	
+	public double lerDouble() {
+		
+		double out;
+		try {
+			out = input.nextDouble();
+		}catch(InputMismatchException e) {
+			System.out.println("Apenas número com ponto!");
+			return lerDouble();
+		}
+		return out;
+	}
+	
+	public String lerString() {
 		return input.nextLine();
 	}
-
-	public double frutaPreco() {
-		System.out.print("Digite o preço da fruta:");
-		double preco = input.nextDouble();
-		input.nextLine();
-		return preco;
+	
+	public void _finalizar_() {
+		
+		System.out.println("\nEncerrando programa...");
+		//System.out.print("\n");
+		
+		int length = 10;
+		for(int i = 1; i <= length; i++) {
+			System.out.print(" [");
+			for(int l = 1; l <= i; ++l) {
+				System.out.print("=");
+			}
+			for(int b = 1; b <= length - i; b++) {
+				System.out.print(" ");
+			}
+			System.out.print("]\r");
+			aguardar(100);
+			
+		}
+		
+		
 	}
-
-	public int frutaQuantidade() {
-		System.out.print("Digite a quantidade:");
-		int quantidade = input.nextInt();
-		input.nextLine();
-		return quantidade;
+	
+	
+	
+	
+	
+	
+	public void aguardar(int millis) {
+		try { Thread.sleep(millis); }catch(InterruptedException e){}
 	}
-
-	public void vizualizar(Fruta fruta) {
-		System.out.println("---");
-		System.out.println("Nome: " + fruta.getNome());
-		System.out.println("Preço: R$" + fruta.getPreco());
-		System.out.println("Quantidade: " + fruta.getQuantidade());
-		System.out.println("Código: " + fruta.getCodigo());
+	
+	public boolean testeInRange(int min, int max, int enter) {
+		if(enter >= min & enter <= max) return true;
+		return false;
 	}
-
-	public String removerFruta() {
-		System.out.println("Digite o nome da fruta a remover:");
-		return input.nextLine();
-	}
-
-	public void vizualizarFrutaRemovidada(String nome) {
-		System.out.println("A fruta '" + nome + "' foi removida.");
-	}
-
-	public void mensagemNaoEncontrado() {
-		System.out.println("Fruta não encontrada.");
-	}
-
-	public void finalizarApp() {
-		System.out.println("Sistema encerrado.");
-	}
+	
 }
