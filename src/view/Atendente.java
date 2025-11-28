@@ -41,19 +41,26 @@ public class Atendente {
 	
 	public void _finalizar_() {
 		
-		System.out.println("\nEncerrando programa...");
+		System.out.print("\nEncerrando programa...\n");
 		//System.out.print("\n");
 		
 		int length = 10;
 		for(int i = 1; i <= length; i++) {
-			System.out.print(" [");
+			
+			StringBuilder line = new StringBuilder("\r[");
+			
 			for(int l = 1; l <= i; ++l) {
-				System.out.print("=");
+				line.append("=");
 			}
 			for(int b = 1; b <= length - i; b++) {
-				System.out.print(" ");
+				line.append(" ");
 			}
-			System.out.print("]\r");
+			
+			line.append("]");
+			
+			System.out.print(line);
+			System.out.flush();
+			
 			aguardar(100);
 			
 		}
