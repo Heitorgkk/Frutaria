@@ -27,18 +27,22 @@ public class Atendente {
 		System.out.println("   [6]  ➤  Sair");
 
 		System.out.println("────────────────────────────────────────────────");
-		System.out.print("   Digite sua opção: ");
+		
 
 		
-		return 0;
+		return lerEntradaMenu();
 		
 	}
 	
 	public int lerEntradaMenu() {
 		
+		System.out.print("   Digite sua opção: ");
 		int opc = lerInt();
 		if(testInRange(1, 6, opc) == true) {
 			return opc;
+		}else {
+			System.out.println("   Opção Inválida!");
+			return lerEntradaMenu();
 		}
 		
 	}
@@ -52,8 +56,10 @@ public class Atendente {
 		int out;
 		try {
 			out = input.nextInt();
+			
 		}catch(InputMismatchException e) {
-			System.out.println("Apenas número inteiro!");
+			input.nextLine();
+			System.out.print("   Apenas número inteiro! ");
 			return lerInt();
 		}
 		return out;
@@ -64,8 +70,10 @@ public class Atendente {
 		double out;
 		try {
 			out = input.nextDouble();
+			
 		}catch(InputMismatchException e) {
-			System.out.println("Apenas número com ponto!");
+			input.nextLine();
+			System.out.print("   Apenas número com ponto! ");
 			return lerDouble();
 		}
 		return out;

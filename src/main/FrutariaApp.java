@@ -7,8 +7,9 @@ public class FrutariaApp {
 	public static void main(String[] args) {
 
 		Atendente at = new Atendente();
+		Estoque est = new Estoque();
 		
-		at.menuInicial();
+		est._iniciar_(at);
 		
 	}
 }
