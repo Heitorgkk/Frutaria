@@ -2,7 +2,11 @@ package view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
+import model.Fruta;
 import model.Produto;
+import model.ProdutoLimpeza;
+import model.Verdura;
 
 public class Atendente {
 	Scanner input;
@@ -18,14 +22,12 @@ public class Atendente {
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃            🛒   MENU DE PRODUTOS   🛒        ┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
 		System.out.println("   [1]  ➤  Adicionar produto");
 		System.out.println("   [2]  ➤  Listar produtos");
 		System.out.println("   [3]  ➤  Remover produto");
 		System.out.println("   [4]  ➤  Buscar produto");
 		System.out.println("   [5]  ➤  Editar produto");
 		System.out.println("   [6]  ➤  Sair");
-
 		System.out.println("────────────────────────────────────────────────");
 		
 
@@ -46,6 +48,109 @@ public class Atendente {
 		}
 		
 	}
+	public int lerTiposProduto() {
+		System.out.println("\nEscolha o tipo de Produto \n");		
+		System.out.println("| [1] Produtos Geral");
+		System.out.println("| [2] Fruta");
+		System.out.println("| [3] Verdura");
+		System.out.println("| [4] Produto de Limpeza");
+		System.out.print("\nEscolha: ");
+		
+		int out = lerIntInRange(1, 4);
+		return out;
+	}
+	public int lerTipoProdutos() {
+		System.out.println("\nEscolha o tipo de Produto ");
+		System.out.println("| [1] Fruta");
+		System.out.println("| [2] Verdura");
+		System.out.println("| [3] Produto de Limpeza");
+		System.out.print("\n >>");
+		
+		int out = lerIntInRange(1, 3);
+		return out;
+	}
+	
+	public int lerIntInRange(int min, int max) {
+		
+		int out;
+		do {
+			out = lerInt();
+			if(!testInRange(min, max, out)) System.out.println("Opção Inválida! Tente novamente.");
+		}while(!testInRange(min, max, out));
+		return out;
+	}
+	
+	public String lerNomeProduto() {
+		System.out.print("Nome do produto: ");
+		return lerString();
+	}
+	
+	
+	
+	
+	public int lerCodigo(List<Produto> list) {
+		System.out.print("\nDigite o código do produto: ");
+		return lerIntInRange(0, list.size() - 1);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public Fruta novaFruta() {
+		System.out.println("\n-----Fruta-----");
+		System.out.print("Nome: ");
+		String nome = lerString();
+		
+		System.out.print("Preço: ");
+		double preco = lerDouble();
+		
+		System.out.print("Quantidade: ");
+		int quantidade = lerInt();
+		
+		System.out.print("Peso: ");
+		double peso = lerDouble();
+		
+		return new Fruta(nome, preco, quantidade, peso);
+	}
+	public Verdura novaVerdura() {
+		System.out.println("\n-----Verdura-----");
+		System.out.print("Nome: ");
+		String nome = lerString();
+		
+		System.out.print("Preço: ");
+		double preco = lerDouble();
+		
+		System.out.print("Quantidade: ");
+		int quantidade = lerInt();
+		
+		System.out.print("Tipo: ");
+		String tipo = lerString();
+		
+		return new Verdura(nome, preco, quantidade, tipo);
+	}
+	public ProdutoLimpeza novoPLimpeza() {
+		System.out.println("\n-----Produto de Limpeza-----");
+		System.out.print("Nome: ");
+		String nome = lerString();
+		
+		System.out.print("Preço: ");
+		double preco = lerDouble();
+		
+		System.out.print("Quantidade: ");
+		int quantidade = lerInt();
+		
+		System.out.print("Marca: ");
+		String marca = lerString();
+		
+		System.out.print("Tipo: ");
+		String tipo = lerString();
+		
+		return new ProdutoLimpeza(nome, preco, quantidade, marca, tipo);
+	}
 	
 	
 	
@@ -59,9 +164,10 @@ public class Atendente {
 			
 		}catch(InputMismatchException e) {
 			input.nextLine();
-			System.out.print("   Apenas número inteiro! ");
+			System.out.print("-Apenas número inteiro! ");
 			return lerInt();
 		}
+		input.nextLine();
 		return out;
 	}
 	
@@ -73,7 +179,7 @@ public class Atendente {
 			
 		}catch(InputMismatchException e) {
 			input.nextLine();
-			System.out.print("   Apenas número com ponto! ");
+			System.out.print("-Apenas número com ponto! ");
 			return lerDouble();
 		}
 		return out;
@@ -85,7 +191,12 @@ public class Atendente {
 	
 	
 	
-	
+	public void erroCritico() {
+		System.out.println("================================");
+		System.out.println("Erro Crítico, encerrando sistema");
+		System.out.println("================================");
+		_finalizar_();
+	}
 	
 	
 	

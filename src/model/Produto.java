@@ -52,6 +52,12 @@ public class Produto {
 		this.codigo = codigo;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Código: "+codigo+"\n"+
+				"Nome: "+nome+"\n"+
+				"Preço: R$"+preco+"\n"+
+				"Quantidade: "+quantidade+"\n";
+	}
 	
 }

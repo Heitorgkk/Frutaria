@@ -20,4 +20,13 @@ public class Verdura extends Produto{
 		this.tipo = tipo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Código: "+codigo+"\n"+
+				"Nome: "+nome+"\n"+
+				"Preço: R$"+preco+"\n"+
+				"Quantidade: "+quantidade+"\n"+
+				"Tipo: "+tipo+"\n";
+	}
+	
 }
