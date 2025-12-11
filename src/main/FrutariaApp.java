@@ -6,10 +6,10 @@ import view.Atendente;
 public class FrutariaApp {
 	public static void main(String[] args) {
 
-		Atendente at = new Atendente();
-		Estoque est = new Estoque();
+		Atendente atendente = new Atendente();
+		Estoque estoque = new Estoque();
 		
-		est._iniciar_(at);
+		estoque._iniciar_(atendente);
 		
 	}
 }
